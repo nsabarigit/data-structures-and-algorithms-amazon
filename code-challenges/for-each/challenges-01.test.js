@@ -107,12 +107,16 @@ This anonymous function should accept up to three arguments: the element, the in
 
 const removeWithAnon = (arr) => {
   // Solution code here...
-//   arr.forEach(item => (item, index, arr) = {
 
-//   } );
-
+  // Added index, array as mentioned in the instruction ; but these 2 arent used.
+  arr.forEach((element, index, array) => {
+    // console.log(index, array);
+    if(element%3 === 2) {
+      arr.pop();
+    }
+  } );
+  return arr;
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
@@ -127,11 +131,25 @@ The inventory is formatted like this:
   { name: 'blueberries', available: false }
 ]
 
-This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
+This function should use forEach to populate your grocery list based on the store's inventory. 
+If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
   // Solution code here...
+
+  let outputArray = [];
+
+  availableItems.forEach((element) => {
+    // console.log(element.name, element.available);
+
+    if(element.available === true) {
+      console.log('Available True - Adding this' + element.name, element.available);
+      outputArray.push(element.name);
+    }
+  }
+  );
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -150,6 +168,30 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
+
+  let outputArray = [];
+
+  arr.forEach((item) => {
+    // let divisibleBy3 = false;
+    // let divisibleBy5 = false;
+
+    // console.log(item + 'item');
+    // console.log(item%3 + 'item%3');
+    if(item%3 === 0 && item%5 === 0) {
+      outputArray.push('Fizz Buzz');
+    }
+    else if(item%5 === 0) {
+    //   divisibleBy5 = true;
+      outputArray.push('Buzz');
+    }
+    else if(item%3 === 0 ) {
+      outputArray.push('Fizz');
+    }
+    else
+      outputArray.push(item);
+  });
+  // console.log(outputArray);
+  return outputArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
